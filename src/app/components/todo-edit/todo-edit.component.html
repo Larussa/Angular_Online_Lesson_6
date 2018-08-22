@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <ngx-spinner type="ball-atom" loadingText="Processing ...">
+  </ngx-spinner>
+  <div class="card card-body card-form">
+    <form (ngSubmit)="onEditTodo()" [formGroup]="editForm">
+      <div class="form-group">
+        <label for="userId">UserId</label>
+        <input type="number"
+               id="userId"
+               class="form-control"
+               formControlName="userId"
+               [ngClass]="{'is-invalid': editForm.get('userId').invalid && editForm.get('userId').dirty}"
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <!-- /.form-group -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text"
+               id="title"
+               class="form-control"
+               formControlName="title"
+               [ngClass]="{'is-invalid': editForm.get('title').invalid && editForm.get('title').dirty}"
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <!-- /.form-group -->
+      <div class="form-group">
+        <label for="completed">Completed</label>
+        <input type="text"
+               id="completed"
+               class="form-control"
+               formControlName="completed"
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <!-- /.form-group -->
+      <button  class="btn btn-outline-info mr-3" *ngIf="isReadOnly" (click)="isReadOnly = false">Edit</button>
+      <button  class="btn btn-outline-info" *ngIf="!isReadOnly" (click)="onEditTodo()">Save</button>
+    </form>
+    <!-- /.form -->
+  </div>
+  <!-- /.card card-body -->
+</div>
+

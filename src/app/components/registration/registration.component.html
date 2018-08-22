@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto mt-5">
+      <div class="card card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegist()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              [ngClass]="{'is-invalid': registerForm.get('name').invalid && registerForm.get('name').dirty}"
+              (blur)="onBlur('name')"
+            >
+            <div class="invalid-feedback" *ngIf="registerForm.get('name').invalid && registerForm.get('name').dirty">
+              Please provide a valid name.
+            </div>
+            <!-- /.invalid-feedback -->
+          </div>
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              [ngClass]="{'is-invalid': registerForm.get('email').invalid && registerForm.get('email').dirty}"
+              (blur)="onBlur('email')"
+            >
+            <div class="invalid-feedback" *ngIf="registerForm.get('email').invalid && registerForm.get('email').dirty">
+              Please provide a valid email.
+            </div>
+            <!-- /.invalid-feedback -->
+          </div>
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password"
+                   id="password"
+                   class="form-control"
+                   formControlName="password"
+                   [ngClass]="{'is-invalid': registerForm.get('password').invalid && registerForm.get('password').dirty}"
+                   (blur)="onBlur('password')"
+            >
+            <div class="invalid-feedback" *ngIf="registerForm.get('password').invalid && registerForm.get('password').dirty">
+              Please provide a valid password.
+            </div>
+            <!-- /.invalid-feedback -->
+          </div>
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label for="repeatPassword">Repeat Password</label>
+            <input
+              type="password"
+              id="repeatPassword"
+              class="form-control"
+              formControlName="repeatPassword"
+              [ngClass]="{'is-invalid': registerForm.get('repeatPassword').invalid && registerForm.get('repeatPassword').dirty}"
+              (blur)="onBlur('repeatPassword')"
+            >
+            <div class="invalid-feedback" *ngIf="registerForm.get('repeatPassword').invalid && registerForm.get('repeatPassword').dirty">
+              Please provide a valid repeat Password.
+            </div>
+            <!-- /.invalid-feedback -->
+          </div>
+          <!-- /.form-group -->
+          <button type="submit" class="btn btn-info btn-block mb-3">Registration</button>
+          <a routerLink="/login">Back to login -></a>
+        </form>
+      </div>
+      <!-- /.card card-body -->
+    </div>
+    <!-- /.col-6 mx-auto -->
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container -->

@@ -1,0 +1,64 @@
+<div class="container d-flex justify-content-center mt-5">
+  <ngx-spinner type="ball-atom" loadingText="Processing ...">
+  </ngx-spinner>
+  <div class="col-6 card mb-3 card-form">
+    <div class="card-body">
+      <form (ngSubmit)="addNewTodo(form)" [formGroup]="addForm">
+        <h4 class="card-title text-center"> Here you can add a new todo</h4>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="userId">UserId<span>*</span></label>
+            <input
+              type="number"
+              id="userId"
+              class="form-control"
+              formControlName="userId"
+              [ngClass]="{'is-invalid': addForm.get('userId').invalid && addForm.get('userId').dirty}"
+            >
+            <div class="invalid-feedback" *ngIf="addForm.get('userId').invalid && addForm.get('userId').dirty">
+              Please provide a valid userId.
+            </div>
+            <!-- /.invalid-feedback -->
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12 ">
+            <label for="title">Title<span>*</span></label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              formControlName="title"
+              [ngClass]="{'is-invalid': addForm.get('title').invalid && addForm.get('title').dirty}"
+            >
+            <div class="invalid-feedback" *ngIf="addForm.get('title').invalid && addForm.get('title').dirty">
+              Please provide a valid title.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group  col-md-12">
+            <label for="completed">Completed<span>*</span></label>
+              <div class="form-check form-check-inline ml-3">
+              <input class="form-check-input"
+                     type="checkbox"
+                     value="option1"
+                     id="completed"
+                     formControlName="completed"
+              >
+              <label class="form-check-label" for="completed">tick if false</label>
+            </div>
+            </div>
+        </div>
+        <!-- /.form-row-->
+        <button type="submit" class="btn btn-outline-info mb-3">Add Todo</button>
+        <p><span>*</span> All required fields must be filled out <p>
+      </form>
+      <!-- ./ form-->
+    </div>
+    <!-- ./ card-body -->
+  </div>
+  <!-- /.card car-form -->
+</div>
+<!-- /.container -->
+

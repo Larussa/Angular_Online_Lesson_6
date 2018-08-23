@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  onLogout(){
+  onLogout() {
     this.auth.logout().subscribe((data: boolean) => {
       if (data)this.router.navigate(['/login']);
     },error => {

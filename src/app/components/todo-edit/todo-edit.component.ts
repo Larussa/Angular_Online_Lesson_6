@@ -51,7 +51,7 @@ export class TodoEditComponent implements OnInit {
     this.todoService.updateTodo(updtTodo).subscribe((res: Todo) => {
       this.toastr.success('Todo was successfully edited!', 'Info!');
       this.router.navigate(['/']);
-    },error => {
+    },() => {
       this.toastr.success('Something wrong!', 'Error!');
     },() => {
       this.spinner.hide();

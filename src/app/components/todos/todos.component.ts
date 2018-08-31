@@ -11,6 +11,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class TodosComponent implements OnInit {
   private todos: Todo[];
+  time: number = Date.now();
+  sumArr: number[] = [1, -3, 7, 10, -18];
 
   constructor(
     public todoService: TodosService,
@@ -23,6 +25,10 @@ export class TodosComponent implements OnInit {
     this.todoService.getTodos().subscribe((data: Todo[]) => this.todos = data,
     () => this.toastr.error('An error occurred!'),
     () => this.spinner.hide());
+
+    setTimeout(() => {
+      this.sumArr.push(14);
+    }, 5000);
   }
 
   onDelete(id: number) {

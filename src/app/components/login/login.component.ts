@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -25,17 +27,21 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    if (this.loginForm.invalid) return;
-    this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((res: boolean) => {
-      if (res) this.router.navigate(['/']);
-      this.auth.emitLoginEvent('true');
-    }, error => {
-      console.log(error.massage);
+    if (this.loginForm.invalid)return;
+    this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((res: boolean ) => {
+      if (res) {
+        this.router.navigate(['/']);
+        this.auth.emitLoginEvent('true');
+      }
+    }, ({error, status}) => {
+      this.toastr.error(`${status}:${error}`,'Error');
     });
   }
-  onBlur(name: string) {
+
+  onBlur(name: string): void {
+    const input = this.loginForm.get(name);
     if (this.loginForm.get(name).invalid) {
-      console.log('input', name, 'invalid');
+      this.toastr.warning(`${name} - is ${input.value ? 'invalid' : 'required'}`);
     }
   }
 }

@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { RegistrationComponent } from './components/registration/registration.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     AddNewTodoComponent,
     TodoEditComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
